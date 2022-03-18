@@ -2,7 +2,9 @@ package apiassistence.com.example.apiassistence.domain;
 
 import apiassistence.com.example.apiassistence.domain.enums.StatusProvider;
 import apiassistence.com.example.apiassistence.domain.enums.TypeProvider;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.apache.tomcat.jni.Address;
 
 import javax.persistence.*;
@@ -37,13 +39,20 @@ public class Provider implements Serializable {
     private Integer status;
 
     // MOSTRAR OS ENDERECOS no provider, e nao mostrar o provider no endereco
-    @JsonIgnore
+   // @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "provider")
     private List<AddressProvider> addresses = new ArrayList<>();
+
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "provider")
+    private List<Called> calleds = new ArrayList<>();
 
     public Provider(){
     }
 
+   // public Provider(Integer id, String name, String telefone, StatusProvider status, TypeProvider type, String email, Called calleds, boolean disable) {
     public Provider(Integer id, String name, String telefone, StatusProvider status, TypeProvider type, String email, boolean disable) {
         this.id = id;
         this.name = name;
@@ -52,6 +61,7 @@ public class Provider implements Serializable {
         this.disable = disable;
         this.type = type.getCod();
         this.status = status.getCod();
+       // this.calleds = (List<Called>) calleds;
     }
 
     public TypeProvider getType() throws IllegalAccessException {return TypeProvider.toEnum(type);}
@@ -81,6 +91,14 @@ public class Provider implements Serializable {
     public void setAddresses(List<AddressProvider> addresses) {
         this.addresses = addresses;
     }
+
+//    public List<Called> getCalleds() {
+//        return calleds;
+//    }
+//
+//    public void setCalleds(List<Called> calleds) {
+//        this.calleds = calleds;
+//    }
 
     @Override
     public boolean equals(Object o) {

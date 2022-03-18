@@ -1,10 +1,12 @@
 package apiassistence.com.example.apiassistence;
 
 import apiassistence.com.example.apiassistence.domain.AddressProvider;
+import apiassistence.com.example.apiassistence.domain.Called;
 import apiassistence.com.example.apiassistence.domain.Provider;
 import apiassistence.com.example.apiassistence.domain.enums.StatusProvider;
 import apiassistence.com.example.apiassistence.domain.enums.TypeProvider;
 import apiassistence.com.example.apiassistence.repositorie.AddressRepositorie;
+import apiassistence.com.example.apiassistence.repositorie.CalledRepositorie;
 import apiassistence.com.example.apiassistence.repositorie.ProviderRepositorie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,6 +25,9 @@ public class ApiAssistenceApplication implements CommandLineRunner {
 	@Autowired
 	private AddressRepositorie addressRepositorie;
 
+	@Autowired
+	private CalledRepositorie calledRepositorie;
+
 	public static void main(String[] args)  {
 		SpringApplication.run(ApiAssistenceApplication.class, args);
 	}
@@ -40,10 +45,13 @@ public class ApiAssistenceApplication implements CommandLineRunner {
 		pro1.getAddresses().addAll(Arrays.asList(end1, end2));
 		pro2.getAddresses().addAll(Arrays.asList(end3));
 
+		Called call1 =  new Called(null, "Pneu furado", "Pneu estourou no buraco", "lat:-19.299, lng:-40.200", "Av Barao homen de melo", "lat:19.299, lng:-41.222",
+				"Prof Mario Werneck ",29, 19, 29, 21, 23, 33, 50, pro1 );
 
 		providerRepositorie.saveAll(Arrays.asList(pro1, pro2));
 		addressRepositorie.saveAll(Arrays.asList(end1, end2, end3));
 
+		calledRepositorie.saveAll(Arrays.asList(call1));
 	}
 
 }

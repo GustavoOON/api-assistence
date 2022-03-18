@@ -1,5 +1,6 @@
 package apiassistence.com.example.apiassistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.tomcat.jni.Address;
 
@@ -30,7 +31,7 @@ public class AddressProvider implements Serializable {
     @NotEmpty
     private String zipCode;
 
-    @JsonIgnore
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="provider_id")
     private Provider provider;
