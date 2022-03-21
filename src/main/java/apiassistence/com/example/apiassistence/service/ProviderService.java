@@ -19,4 +19,12 @@ public class ProviderService {
     public List<Provider> findAll(){
         return repo.findAll();
     }
+
+
+    public Provider insert (Provider obj){
+        obj.setId(null);
+        return repo.save(obj);
+    }
+
+
 }

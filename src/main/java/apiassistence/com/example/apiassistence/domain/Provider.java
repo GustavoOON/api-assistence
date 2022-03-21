@@ -21,25 +21,21 @@ public class Provider implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty
     private String name;
 
     // tipo prestador
     private Integer type;
 
-    @NotEmpty
     private String telefone;
 
-    @NotEmpty
     private String email;
 
     private boolean disable;
 
-    // status
     private Integer status;
 
     // MOSTRAR OS ENDERECOS no provider, e nao mostrar o provider no endereco
-   // @JsonIgnore
+    // @JsonIgnore
     @JsonManagedReference
     @OneToMany(mappedBy = "provider")
     private List<AddressProvider> addresses = new ArrayList<>();
@@ -61,7 +57,6 @@ public class Provider implements Serializable {
         this.disable = disable;
         this.type = type.getCod();
         this.status = status.getCod();
-       // this.calleds = (List<Called>) calleds;
     }
 
     public TypeProvider getType() throws IllegalAccessException {return TypeProvider.toEnum(type);}
@@ -92,13 +87,6 @@ public class Provider implements Serializable {
         this.addresses = addresses;
     }
 
-//    public List<Called> getCalleds() {
-//        return calleds;
-//    }
-//
-//    public void setCalleds(List<Called> calleds) {
-//        this.calleds = calleds;
-//    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,6 +1,8 @@
 package apiassistence.com.example.apiassistence.domain;
 
 
+import apiassistence.com.example.apiassistence.domain.enums.StatusCalled;
+import apiassistence.com.example.apiassistence.domain.enums.StatusProvider;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -43,6 +45,7 @@ public class Called implements Serializable {
 
     private float timeOperation;
 
+    private Integer status;
 
     // relacionar cliente
 
@@ -52,13 +55,21 @@ public class Called implements Serializable {
     @JoinColumn(name="provider_id")
     private Provider provider;
 
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name="client_id")
+    private Client client;
 
     public Called(){
     }
 
     public Called(Integer id, String problem, String description, String addressOcorrencyLatLng, String addressOcorrency, String addressDestinyLatLng,
                   String addressDestiny, float timeOcorrenncyXDestiny, float distanceOcorrencyXDestiny, float timeProviderXOcorrency,
-                  float distanceProviderXOcorrency, float timeProviderXDestiny, float distanceProviderXDestiny, float timeOperation, Provider provider) {
+                  float distanceProviderXOcorrency, float timeProviderXDestiny, float distanceProviderXDestiny, float timeOperation,
+                  Provider provider,
+                  Client client,
+                  StatusCalled status
+    ) {
         this.id = id;
         this.problem = problem;
         this.description = description;
@@ -74,8 +85,12 @@ public class Called implements Serializable {
         this.distanceProviderXDestiny = distanceProviderXDestiny;
         this.timeOperation = timeOperation;
         this.provider = provider;
-
+        this.client = client;
+        this.status = status.getCod();
     }
+
+    public StatusCalled getStatus() throws IllegalAccessException {return StatusCalled.toEnum(status);}
+    public void setStatus(StatusCalled status) {this.status = status.getCod();}
 
     public String getAddressOcorrencyLatLng() {return addressOcorrencyLatLng;}
     public void setAddressOcorrencyLatLng(String addressOcorrencyLatLng) {this.addressOcorrencyLatLng = addressOcorrencyLatLng;}
@@ -121,6 +136,9 @@ public class Called implements Serializable {
 
     public Provider getProvider() {return provider;}
     public void setProvider(Provider provider) {this.provider = provider;}
+
+    public Client getClient() {return client;}
+    public void setClient(Client client) {this.client = client;}
 
 
     @Override

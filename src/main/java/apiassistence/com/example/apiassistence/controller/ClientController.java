@@ -1,7 +1,9 @@
 package apiassistence.com.example.apiassistence.controller;
 
+
+import apiassistence.com.example.apiassistence.domain.Client;
 import apiassistence.com.example.apiassistence.domain.Provider;
-import apiassistence.com.example.apiassistence.service.ProviderService;
+import apiassistence.com.example.apiassistence.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,24 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping(value = "/provider")
+@RequestMapping(value = "/client")
 @RestController
-public class ProviderController {
+public class ClientController {
+
 
     @Autowired
-    private ProviderService service;
+    private ClientService service;
+
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Provider>> findAll(){
-        List<Provider> providers = service.findAll();
+    public ResponseEntity<List<Client>> findAll(){
+        List<Client> clients = service.findAll();
 
-        return ResponseEntity.ok().body(providers);
+        return ResponseEntity.ok().body(clients);
     }
-
-//    @RequestMapping(method = RequestMethod.POST)
-//    public ResponseEntity<Void> insert(@Valid @RequestBody ProviderRequest providerRequest){
-//
-//    }
-
-
 }
