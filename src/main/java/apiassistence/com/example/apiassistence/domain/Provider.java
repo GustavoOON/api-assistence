@@ -32,9 +32,9 @@ public class Provider implements Serializable {
     private List<AddressProvider> addresses = new ArrayList<>();
 
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "provider")
-    private List<Called> calleds = new ArrayList<>();
+//    @JsonBackReference
+//    @OneToMany(mappedBy = "provider")
+//    private List<Called> calleds = new ArrayList<>();
 
     public Provider(){
     }

@@ -20,7 +20,7 @@ public class NewCalledRequest implements Serializable {
     private float timeOperation;
     private Integer status;
 
-    // salvar cliente
+    private String idCli; // preencher com o id do cliente respectivo
     private String firstNameCli;
     private String fullNameCli;
     private String phoneCli;
@@ -31,12 +31,6 @@ public class NewCalledRequest implements Serializable {
     private String modelCli;
     private String fuelCli;
     private String planCli;
-
-    // inserir provedor mais nao salvar no banco de dados de provedores
-    private Integer idProvider;
-
-    // endereco do provedor tbm nao salvar
-    private Integer idAddressProvider;
 
     public NewCalledRequest(){
     }
@@ -153,6 +147,14 @@ public class NewCalledRequest implements Serializable {
         this.status = status;
     }
 
+    public String getIdCli() {
+        return idCli;
+    }
+
+    public void setIdCli(String idCli) {
+        this.idCli = idCli;
+    }
+
     public String getFirstNameCli() {
         return firstNameCli;
     }
@@ -231,21 +233,5 @@ public class NewCalledRequest implements Serializable {
 
     public void setPlanCli(String planCli) {
         this.planCli = planCli;
-    }
-
-    public Integer getIdProvider() {
-        return idProvider;
-    }
-
-    public void setIdProvider(Integer idProvider) {
-        this.idProvider = idProvider;
-    }
-
-    public Integer getIdAddressProvider() {
-        return idAddressProvider;
-    }
-
-    public void setIdAddressProvider(Integer idAddressProvider) {
-        this.idAddressProvider = idAddressProvider;
     }
 }

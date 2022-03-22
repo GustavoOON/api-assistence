@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -33,18 +32,11 @@ public class Called implements Serializable {
     private float timeOperation;
     private Integer status;
 
-    // relacionar cliente
-
-    // relacionar um provedor
     @JsonManagedReference
     @ManyToOne
-    @JoinColumn(name="provider_id")
-    private Provider provider;
-
-    @JsonManagedReference
-    @ManyToOne
-    @JoinColumn(name="client_id")
+    @JoinColumn(name = "cliente_id")
     private Client client;
+
 
     public Called(){
     }
@@ -52,9 +44,7 @@ public class Called implements Serializable {
     public Called(Integer id, String problem, String description, String addressOcorrencyLatLng, String addressOcorrency, String addressDestinyLatLng,
                   String addressDestiny, float timeOcorrenncyXDestiny, float distanceOcorrencyXDestiny, float timeProviderXOcorrency,
                   float distanceProviderXOcorrency, float timeProviderXDestiny, float distanceProviderXDestiny, float timeOperation,
-                  Provider provider,
-                  Client client,
-                  StatusCalled status
+                  StatusCalled status, Client client
     ) {
         this.id = id;
         this.problem = problem;
@@ -70,10 +60,12 @@ public class Called implements Serializable {
         this.timeProviderXDestiny = timeProviderXDestiny;
         this.distanceProviderXDestiny = distanceProviderXDestiny;
         this.timeOperation = timeOperation;
-        this.provider = provider;
-        this.client = client;
         this.status = status.getCod();
+        this.client = client;
     }
+
+    public Client getClient() {return client;}
+    public void setClient(Client client) {this.client = client;}
 
     public StatusCalled getStatus() throws IllegalAccessException {return StatusCalled.toEnum(status);}
     public void setStatus(StatusCalled status) {this.status = status.getCod();}
@@ -119,12 +111,6 @@ public class Called implements Serializable {
 
     public float getTimeOperation() {return timeOperation;}
     public void setTimeOperation(float timeOperation) {this.timeOperation = timeOperation;}
-
-    public Provider getProvider() {return provider;}
-    public void setProvider(Provider provider) {this.provider = provider;}
-
-    public Client getClient() {return client;}
-    public void setClient(Client client) {this.client = client;}
 
 
     @Override

@@ -54,7 +54,7 @@ public class ApiAssistenceApplication implements CommandLineRunner {
 
 
 		Called call1 =  new Called(null, "Pneu furado", "Pneu estourou no buraco", "lat:-19.299, lng:-40.200", "Av Barao homen de melo", "lat:19.299, lng:-41.222",
-				"Prof Mario Werneck ",29, 19, 29, 21, 23, 33, 50, pro1, cli1, StatusCalled.GUINCHOACAMINHO );
+				"Prof Mario Werneck ",29, 19, 29, 21, 23, 33, 50, StatusCalled.GUINCHOACAMINHO, cli1 );
 
 		providerRepositorie.saveAll(Arrays.asList(pro1, pro2));
 		addressRepositorie.saveAll(Arrays.asList(end1, end2, end3));

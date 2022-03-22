@@ -1,9 +1,9 @@
 package apiassistence.com.example.apiassistence.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,11 +41,10 @@ public class Client implements Serializable {
     private String plan;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "client")
+    @OneToMany
     private List<Called> calleds = new ArrayList<>();
 
-
-    public Client (){
+    public Client(){
     }
 
     public Client(String id, String firstName, String fullName, String phone, String email, String statusPayments,
@@ -61,6 +60,14 @@ public class Client implements Serializable {
         this.model = model;
         this.fuel = fuel;
         this.plan = plan;
+    }
+
+    public List<Called> getCalleds() {
+        return calleds;
+    }
+
+    public void setCalleds(List<Called> calleds) {
+        this.calleds = calleds;
     }
 
     public String getId() {return id;}
@@ -108,4 +115,5 @@ public class Client implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
