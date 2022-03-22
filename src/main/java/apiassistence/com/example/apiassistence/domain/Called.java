@@ -18,33 +18,19 @@ public class Called implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty
     private String problem;
-
     private String description;
-
     private String addressOcorrencyLatLng;  // pegando latitude e longitude Noa sei se vai dar certo kk
-
     private String addressOcorrency;
-
     private String addressDestinyLatLng;  // pegando latitude e longitude Noa sei se vai dar certo kk
-
     private String addressDestiny;
-
     private float timeOcorrenncyXDestiny;
-
     private float distanceOcorrencyXDestiny;
-
     private float TimeProviderXOcorrency;
-
     private float distanceProviderXOcorrency;
-
     private float timeProviderXDestiny;
-
     private float distanceProviderXDestiny;
-
     private float timeOperation;
-
     private Integer status;
 
     // relacionar cliente

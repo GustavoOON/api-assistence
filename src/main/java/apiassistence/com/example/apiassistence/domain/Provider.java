@@ -3,12 +3,9 @@ package apiassistence.com.example.apiassistence.domain;
 import apiassistence.com.example.apiassistence.domain.enums.StatusProvider;
 import apiassistence.com.example.apiassistence.domain.enums.TypeProvider;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.apache.tomcat.jni.Address;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,18 +17,12 @@ public class Provider implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String name;
-
     // tipo prestador
     private Integer type;
-
     private String telefone;
-
     private String email;
-
     private boolean disable;
-
     private Integer status;
 
     // MOSTRAR OS ENDERECOS no provider, e nao mostrar o provider no endereco

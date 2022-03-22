@@ -15,20 +15,10 @@ public class AddressProvider implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @NotEmpty
     private String place;
-
-    @NotEmpty
     private String number;
-
-    @NotEmpty
     private String complement;
-
-    @NotEmpty
     private String district;
-
-    @NotEmpty
     private String zipCode;
 
     @JsonBackReference
