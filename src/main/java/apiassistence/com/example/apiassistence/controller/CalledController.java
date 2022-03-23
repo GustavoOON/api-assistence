@@ -34,7 +34,7 @@ public class CalledController {
         return ResponseEntity.ok().body(calleds);
     }
 
-
+    /*
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> insert (@Valid @RequestBody NewCalledRequest objRequest) throws IllegalAccessException {
         Called obj = service.fromRequest(objRequest);
@@ -42,7 +42,7 @@ public class CalledController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
 
-    }
+    }*/
 
 
 }

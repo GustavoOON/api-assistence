@@ -34,7 +34,7 @@ public class CalledService {
     }
 
 
-     public Called fromRequest(NewCalledRequest objRequest) throws IllegalAccessException {
+   /*  public Called fromRequest(NewCalledRequest objRequest) throws IllegalAccessException {
 
         Client cli = new Client(objRequest.getIdCli(), objRequest.getFirstNameCli(), objRequest.getFullNameCli(), objRequest.getPhoneCli(), objRequest.getEmailCli(),
                 objRequest.getStatusPaymentsCli(), objRequest.getStatusCli(), objRequest.getPlateCli(), objRequest.getModelCli(), objRequest.getFuelCli(), objRequest.getPlanCli());
@@ -49,6 +49,6 @@ public class CalledService {
 
 
         return call;
-    }
+    } */
 
 }

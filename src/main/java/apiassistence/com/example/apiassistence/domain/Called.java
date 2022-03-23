@@ -37,6 +37,12 @@ public class Called implements Serializable {
     @JoinColumn(name = "cliente_id")
     private Client client;
 
+    @ManyToOne
+    @JoinColumn(name="address_id")
+    private AddressProvider addressProvider;
+
+//    @ManyToOne
+//    @JoinColumn(name = "")
 
     public Called(){
     }
@@ -44,7 +50,7 @@ public class Called implements Serializable {
     public Called(Integer id, String problem, String description, String addressOcorrencyLatLng, String addressOcorrency, String addressDestinyLatLng,
                   String addressDestiny, float timeOcorrenncyXDestiny, float distanceOcorrencyXDestiny, float timeProviderXOcorrency,
                   float distanceProviderXOcorrency, float timeProviderXDestiny, float distanceProviderXDestiny, float timeOperation,
-                  StatusCalled status, Client client
+                  StatusCalled status, Client client, AddressProvider addressProvider
     ) {
         this.id = id;
         this.problem = problem;
@@ -62,7 +68,17 @@ public class Called implements Serializable {
         this.timeOperation = timeOperation;
         this.status = status.getCod();
         this.client = client;
+        this.addressProvider = addressProvider;
     }
+
+    public AddressProvider getAddressProvider() {
+        return addressProvider;
+    }
+
+    public void setAddressProvider(AddressProvider addressProvider) {
+        this.addressProvider = addressProvider;
+    }
+
 
     public Client getClient() {return client;}
     public void setClient(Client client) {this.client = client;}
